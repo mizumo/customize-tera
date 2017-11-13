@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<events>
+
+	<!-- Notification when something happen & you are not on the Tera windows -->
+	<common_afk priority="0">
+		<actions>
+				<notify>
+					<balloon title_text="{afk_title}" body_text="{afk_body}" display_time="3000" />
+					<text_to_speech text="{afk_body}" voice_gender="Female" voice_age="Adult" voice_position="0" volume="30" rate="0" />
+				</notify>
+			</actions>
+	</common_afk>
+	
+	<!-- The boss became enraged -->
+	<abnormality ingame="true" trigger="Added" target="Boss">
+		<abnormalities>
+			<abnormality>8888888</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name} : on" body_text="{abnormality_name}" display_time="3000" />
+				<text_to_speech text="{abnormality_name}" voice_gender="Female" voice_age="Adult" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Raid P3 tank debuff overload warning -->
+	<abnormality ingame="true" trigger="Added" target="Self" priority="11" >
+		<abnormalities>
+			<abnormality stack="5">950023</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="WARNING {abnormality_name}" body_text="{abnormality_name}" display_time="3000" />
+				<text_to_speech text="WARNING {abnormality_name}" voice_gender="Female" voice_age="Adult" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+
+	<!-- Enrage is ending -->
+	<abnormality active="true" ingame="true" rewarn_timeout_seconds="6" remaining_seconds_before_trigger="10" trigger="Ending" target="Boss">
+		<abnormalities>
+			<abnormality>8888888</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name} is ending" body_text="{abnormality_name} {time_left} left" display_time="3000" />
+				<text_to_speech text="{abnormality_name} is ending" voice_gender="Female" voice_age="Adult" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>	
+
+	<!-- Joy of party is at 100% (everyone is in the dungeons) -->
+	<abnormality ingame="false" trigger="Added" target="Self">
+		<abnormalities>
+			<abnormality>999001021</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{abnormality_name}" display_time="3000" />
+				<text_to_speech text="{abnormality_name}" voice_gender="Female" voice_age="Adult" culture="en-US" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+		
+	<!-- Raid 30, phase 3, black debuff (Dust) -->
+	<abnormality ingame="true" priority="11" trigger="Added" target="Self">
+		<abnormalities>
+			<abnormality>950069</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{abnormality_name}" display_time="3000" />
+				<text_to_speech text="Black" voice_gender="Female" voice_age="Adult" culture="en-US" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Raid 30, phase 3, red debuff (Flame) -->
+	<abnormality ingame="true" priority="10" trigger="Added" target="Self">
+		<abnormalities>
+			<abnormality>950068</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{abnormality_name}" display_time="3000" />
+				<text_to_speech text="Red" voice_gender="Female" voice_age="Adult" culture="en-US" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Crystal bind check for yourself -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="50" rewarn_timeout_seconds="5" trigger="MissingDuringFight" target="Self">
+		<abnormalities>
+			<abnormality>CrystalBind</abnormality>
+			<abnormality>CCrystalBind</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+				<text_to_speech text="Crystal bind" voice_gender="Female" voice_age="Adult" culture="en-US" voice_position="0" volume="30" rate="0" />
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Crystal bind check for your party members -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="240" rewarn_timeout_seconds="240" trigger="MissingDuringFight" target="PartySelfExcluded">
+		<abnormalities>
+			<abnormality>CrystalBind</abnormality>
+			<abnormality>CCrystalBind</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Everful Nostrum for yourself -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="10" rewarn_timeout_seconds="3" trigger="MissingDuringFight" target="Self">
+		<abnormalities>
+			<abnormality>4031</abnormality>
+			<abnormality>4030</abnormality>
+			<abnormality>4020</abnormality>
+			<abnormality>4021</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+				<text_to_speech text="Nostrum" voice_gender="Female" voice_age="Adult" culture="en-US" voice_position="0" volume="30" rate="0"/>
+			</notify>
+		</actions>
+	</abnormality>
+	
+	<!-- Everful Nostrum for your party members -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="10" rewarn_timeout_seconds="240" trigger="MissingDuringFight" target="PartySelfExcluded">
+		<abnormalities>
+			<abnormality>4031</abnormality>
+			<abnormality>4030</abnormality>
+			<abnormality>4020</abnormality>
+			<abnormality>4021</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+			</notify>
+		</actions>
+	</abnormality>
+
+	<!-- Bravery pot -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="10" rewarn_timeout_seconds="30" trigger="MissingDuringFight" target="Self">
+		<abnormalities>
+			<abnormality>4830</abnormality>
+			<abnormality>4831</abnormality>
+			<abnormality>4832</abnormality>
+			<abnormality>4833</abnormality>
+			<abnormality>4886</abnormality>
+			<abnormality>5010005</abnormality>
+			<abnormality>5010006</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+			<beeps>
+				<beep frequency="196" duration="500"/>
+			</beeps>
+		</notify>
+		</actions>
+	</abnormality>
+
+	<!-- Bravery pot -->
+	<abnormality ingame="true" remaining_seconds_before_trigger="10" rewarn_timeout_seconds="30" trigger="MissingDuringFight" target="PartySelfExcluded">
+		<abnormalities>
+			<abnormality>4830</abnormality>
+			<abnormality>4831</abnormality>
+			<abnormality>4832</abnormality>
+			<abnormality>4833</abnormality>
+			<abnormality>4886</abnormality>
+			<abnormality>5010005</abnormality>
+			<abnormality>5010006</abnormality>
+		</abnormalities>
+		<actions>
+			<notify>
+				<balloon title_text="{abnormality_name}" body_text="{player_name} {time_left}" display_time="3000" />
+			<beeps>
+				<beep frequency="196" duration="500"/>
+			</beeps>
+		</notify>
+		</actions>
+	</abnormality>
+
+
+</events>
